@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,12 +27,12 @@ jobs:
         working-directory: ./complete
         run: mvn clean package
 
-      - name: Copy JAR to repository folder
+      - name: Copy JAR
         run: |
           mkdir -p complete/build-artifact
           cp complete/target/*.jar complete/build-artifact/
 
-      - name: Commit JAR to GitHub
+      - name: Commit and Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
