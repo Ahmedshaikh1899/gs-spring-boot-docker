@@ -21,7 +21,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       working-directory: ./complete
-      run: mvn clean -install package --file complete/pom.xml
+      run: mvn clean -install package
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
